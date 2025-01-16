@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Thought to Code AI</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles to ensure smooth UI */
+        body {
+            background-color: #f7f7f7;
+        }
+        .code-output {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            height: 300px;
+            overflow-y: auto;
+        }
+        iframe {
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans flex flex-col items-center p-10 min-h-screen">
+    <h1 class="text-4xl font-bold text-gray-800 mb-6 text-center">🚀 Thought to Code AI</h1>
+    <p class="text-lg text-gray-600 mb-10 text-center">Type your idea below, and let AI generate real working code!</p>
+    
+    <!-- Input and Button -->
+    <textarea id="ideaInput" class="w-full max-w-3xl p-4 mb-4 text-xl rounded-lg border border-gray-300 shadow-lg" rows="4" placeholder="Describe your project idea..."></textarea>
+    
+    <button onclick="generateCode()" class="bg-blue-500 text-white px-6 py-2 rounded-lg shadow-lg text-xl hover:bg-blue-600 transition duration-300">
+        Generate Code
+    </button>
+    
+    <!-- Display generated code -->
+    <h3 class="text-2xl font-semibold text-gray-800 mt-12 mb-4">Generated Code:</h3>
+    <div id="outputCode" class="code-output mb-8 w-full max-w-3xl"></div>
+    
+    <!-- Live Preview -->
+    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Live Preview:</h3>
+    <iframe id="livePreview" class="w-full h-96 mb-6" src="about:blank"></iframe>
+
+    <script>
+        async function generateCode() {
+            const idea = document.getElementById('ideaInput').value;
+            if (!idea.trim()) {
+                alert("Please enter an idea first!");
+                return;
+            }
+
+            // Simulate AI-generated code (mockup for now)
+            const mockGeneratedCode = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Project</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { background: #4CAF50; color: white; padding: 10px 20px; }
+        .content { padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Welcome to Your Generated Project</h1>
+        </header>
+        <section class="content">
+            <p>This is a placeholder for your AI-generated project based on the idea: "${idea}".</p>
+        </section>
+    </div>
+</body>
+</html>
+            `;
+
+            // Display the generated code
+            document.getElementById("outputCode").textContent = mockGeneratedCode;
+
+            // Inject into the iframe for live preview
+            const iframe = document.getElementById("livePreview").contentWindow.document;
+            iframe.open();
+            iframe.write(mockGeneratedCode);
+            iframe.close();
+        }
+    </script>
+</body>
+</html>
